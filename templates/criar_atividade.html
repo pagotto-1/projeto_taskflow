@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="create-activity-container">
+    <h2>Criar Nova Atividade</h2>
+    <p>Preencha o formulário para registrar a nova atividade no sistema</p>
+    <form action="" method="post">
+        <div class="form-container">
+            <div class="name-activity-container">
+                <label for="name_activity">Nome da Atividade</label>
+                <input type="text" name="form_name_activity" id="name_activity" placeholder="Ex.: Reformular Rota 'pessoa'" required>
+            </div>
+
+            <div class="description-activity-container">
+                <label for="description_activity">Descrição da Atividade</label>
+                <textarea name="form_description_activity" id="description_activity" cols="50" rows="5" placeholder="Ex.: Trocar route('/pessoa') para route('/user') e substituir os campos que forem necessários" required></textarea>
+            </div>
+
+            <div class="priority-activity-container">
+                <label>Prioridade da Atividade</label>
+                <div class="priority-activity-radio-container">
+                    <label><input type="radio" name="form_priority_activity" value="low">Baixa</label>
+                    <label><input type="radio" name="form_priority_activity" value="medium" checked>Média</label>
+                    <label><input type="radio" name="form_priority_activity" value="high">Alta</label>
+                </div>
+            </div>
+
+            <div class="resources-activity-container">
+                <label>Recursos Necessários</label>
+                <div class="resources-activity-checkboxes-container">
+                    <label><input type="checkbox" name="form_resources_activity" value="net" checked>Internet</label>
+                    <label><input type="checkbox" name="form_resources_activity" value="pc">Computador</label>
+                    <label><input type="checkbox" name="form_resources_activity" value="phone">Celular</label>
+                    <label><input type="checkbox" name="form_resources_activity" value="pen">Caneta</label>
+                    <label><input type="checkbox" name="form_resources_activity" value="paper">Papel</label>
+                </div>
+            </div>
+
+            <div class="date-activity-container">
+                <label for="date_activity">Data da Atividade</label>
+                <input type="date" name="form_date_activity" id="date_activity" required>
+            </div>
+
+            <div class="form-activity-buttons">
+                    <button type="submit" class="submit-button">Enviar</button>
+                    <button type="reset" class="reset-button">Limpar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

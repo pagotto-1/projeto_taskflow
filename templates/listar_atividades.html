@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="list-activities-container">
+    <h2>Lista de Atividades Cadastradas</h2>
+    {% for activity in activities %}
+        <table class="table-activities">
+            <caption>
+                {{ activity.name_activity }}
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Prioridade</th>
+                    <th scope="col">Recursos</th>
+                    <th scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ activity.description_activity }}</td>
+                    <td>{{ activity.priority_activity }}</td>
+                    <td>{{ activity.resources_activity }}</td>
+                    <td>{{ activity.date_activity }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+</div>
+
+{% endblock %}

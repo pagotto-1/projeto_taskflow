@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="introduction-container">
+    <h2>Bem Vindo ao Gerenciador de Tarefas da TaskFlow Corp!</h2>
+    <p>Este é o portal interno para acompanhamento e gerenciamento de tarefas da empresa</p>
+    <p>Utilize o menu de navegação para criar atividades, listar as atividades criadas ou acessar seu perfil de usuário</p>
+    <form action="" method="post">
+        <div class="suggestion-container">
+            <label for="suggestion">Se quiser sugerir alguma alteração, escreva a seguir:</label>
+            <textarea name="suggestion" id="suggestion" cols="50" rows="15"></textarea>
+
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
