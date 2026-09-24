@@ -4,6 +4,7 @@
 
 <div class="list-activities-container">
     <h2>Lista de Atividades Cadastradas</h2>
+    <a href="{{url_for('criar_atividade')}}">Criar</a>
     {% for activity in activities %}
         <table class="table-activities">
             <caption>

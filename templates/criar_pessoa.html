@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form action="{{url_for('criar_pessoa')}}" method="post">
+            <label for="form_nome">Nome</label>
+            <input type="text" name="form_nome">
+            <br>
+            <label for="form_email">Email</label>
+            <input type="text" name="form_email">
+            <br>
+            <label for="form_senha">Senha</label>
+            <input type="password" name="form_senha">
+            <br>
+        <button type="submit">sidney</button>
+    </form>
+
+{% endblock content %}
