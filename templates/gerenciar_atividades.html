@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="list-activities-container">
+    <div class="list-activities-header">
+        <h2>Lista de Atividades Cadastradas</h2>
+        <a href="{{ url_for('criar_atividade') }}">Cadastrar Atividade &plus;</a>
+    </div>
+    <table class="table-activities">
+        <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Prioridade</th>
+            <th scope="col">Recursos</th>
+            <th scope="col">Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td class="activity-name">{{ activity.name_activity }}</td>
+                <td class="activity-description">{{ activity.description_activity }}</td>
+                <td class="activity-priority">{{ activity.priority_activity }}</td>
+                <td class="activity-resources">{{ activity.resources_activity }}</td>
+                <td class="activity-date">{{ activity.date_activity }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

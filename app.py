@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 from datetime import datetime
 from models import Pessoa, db_session
 from sqlalchemy.exc import SQLAlchemyError
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'lanalindaperfeitamaravilhosa'
+
+activity_list = []
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -14,6 +16,12 @@ def home():
         suggestion_list.append(suggestion)
 
     return render_template('index.html')
+
+@app.route('/atividades')
+def gerenciar_atividades():
+    activities = activity_list
+
+    return render_template('gerenciar_atividades.html', activities=activities)
 
 @app.route('/atividades/criar', methods=['GET', 'POST'])
 def criar_atividade():
@@ -35,18 +43,13 @@ def criar_atividade():
         }
 
         activity_list.append(activity_data)
+        return redirect(url_for('gerenciar_atividades'))
 
     return render_template('criar_atividade.html')
 
-@app.route('/atividades/listar')
-def listar_atividades():
-    activities = activity_list
-
-    return render_template('listar_atividades.html', activities=activities)
-
 @app.route('/pessoa')
-def pessoa():
-    return render_template('pessoa.html')
+def gerenciar_pessoas():
+    return render_template('gerenciar_pessoas.html')
 
 @app.route('/pessoa/criar', methods=['GET', 'POST'])
 def criar_pessoa():
@@ -61,7 +64,7 @@ def criar_pessoa():
             nova_pessoa = Pessoa(nome_pessoa=nome_form, email=email_form, senha_hash=senha_form)
             db_session.add(nova_pessoa)
             db_session.commit()
-            return render_template('pessoa.html')
+            return redirect(url_for('gerenciar_pessoas'))
         except SQLAlchemyError:
             db_session.rollback()
             flash('Erro ao salvar pessoa no bando de dados', 'error')
@@ -71,6 +74,14 @@ def criar_pessoa():
             flash('Erro inesperado', 'error')
             return render_template('criar_pessoa.html')
     return render_template('criar_pessoa.html')
+
+@app.route('/recursos')
+def gerenciar_recursos():
+    return render_template('gerenciar_recursos.html')
+
+@app.route('/tipos')
+def gerenciar_tipos():
+    return render_template('gerenciar_tipos.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
